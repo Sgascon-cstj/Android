@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Premiere Application</string>
+    <string name="msgHello">Hello from my Android App</string>
+    <string name="btnPhone">Téléphoner</string>
+    <string name="btnSms">SMS</string>
+    <string name="btngame">btnGame</string>
+
 </resources>
