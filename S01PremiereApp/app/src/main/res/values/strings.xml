@@ -4,5 +4,15 @@
     <string name="btnPhone">Téléphoner</string>
     <string name="btnSms">SMS</string>
     <string name="btngame">btnGame</string>
+    <string name="validate">Vérifier</string>
+    <string name="msg_good_luck">Bonne chance!</string>
+    <string name="find_number">Deviner le nombre</string>
+    <string name="msgGame">Bonjours %s, devinez le nombre</string>
+    <string name="msgWin">Bravo! nombre d\'essai %s</string>
+    <plurals name="msgTries">
+        <item quantity="one"> %d essai</item>
+        <item quantity="other"> %d essais</item>
+
+    </plurals>
 
 </resources>

@@ -52,5 +52,17 @@
         app:layout_constraintEnd_toEndOf="@+id/btnSMS"
         app:layout_constraintStart_toStartOf="@+id/btnSMS" />
 
+    <EditText
+        android:id="@+id/edtPlayerName"
+        android:layout_width="269dp"
+        android:layout_height="79dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
