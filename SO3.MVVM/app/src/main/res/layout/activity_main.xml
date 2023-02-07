@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imvPilot"
         app:layout_constraintTop_toTopOf="@+id/imvPilot"
+
         tools:text="Samuel" />
 
     <TextView
@@ -156,33 +157,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.43" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/revolution"
+        app:layout_constraintBottom_toBottomOf="@+id/sldRevolution"
         app:layout_constraintStart_toStartOf="@+id/imvPilot"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <com.google.android.material.slider.Slider
-        android:layout_width="100dp"
+        android:id="@+id/sldRevolution"
+        android:layout_width="0dp"
         android:layout_height="25dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:stepSize="1.0"
+        android:valueFrom="1.0"
+        android:valueTo="5.0"
+        android:value="3.0"
+        app:layout_constraintEnd_toStartOf="@+id/swtTrainig"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView11"
-        tools:layout_editor_absoluteY="357dp" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="100dp"
-        android:layout_height="25dp"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/swtTrainig"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:text="@string/training"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/sldRevolution"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Button
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch"
+        android:layout_marginTop="32dp"
+        android:text="@string/start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sldRevolution" />
+
+    <ImageView
+        android:id="@+id/imvPlanet"
+        android:layout_width="257dp"
+        android:layout_height="224dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart"
+        app:srcCompat="@drawable/planet" />
+
+    <ImageView
+        android:id="@+id/imvRocket"
+        android:layout_width="74dp"
+        android:layout_height="62dp"
+        app:srcCompat="@drawable/rocket"
         tools:layout_editor_absoluteX="263dp"
-        tools:layout_editor_absoluteY="423dp" />
+        tools:layout_editor_absoluteY="484dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
