@@ -215,10 +215,13 @@
 
     <ImageView
         android:id="@+id/imvRocket"
-        android:layout_width="74dp"
-        android:layout_height="62dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:srcCompat="@drawable/rocket"
-        tools:layout_editor_absoluteX="263dp"
-        tools:layout_editor_absoluteY="484dp" />
+        app:layout_constraintCircle="@id/imvPlanet"
+        app:layout_constraintCircleAngle="69"
+        app:layout_constraintCircleRadius="110dp"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="454dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
