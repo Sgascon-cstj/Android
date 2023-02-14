@@ -1,5 +1,6 @@
 package com.example.mvvm.presentation.planet.adapters
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm.domain.models.Planet
@@ -16,7 +17,7 @@ class PlanetRecyclerViewAdapter(val planets: List<Planet>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
-    inner class ViewHolder() : RecyclerView.ViewHolder(){
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
     }
 }
