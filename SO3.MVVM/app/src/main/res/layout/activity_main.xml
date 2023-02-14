@@ -175,9 +175,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:stepSize="1.0"
+        android:value="3.0"
         android:valueFrom="1.0"
         android:valueTo="5.0"
-        android:value="3.0"
         app:layout_constraintEnd_toStartOf="@+id/swtTrainig"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView11"
@@ -200,7 +200,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/start"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlanet"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sldRevolution" />
 
@@ -217,11 +218,21 @@
         android:id="@+id/imvRocket"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        app:srcCompat="@drawable/rocket"
         app:layout_constraintCircle="@id/imvPlanet"
         app:layout_constraintCircleAngle="69"
         app:layout_constraintCircleRadius="110dp"
+        app:srcCompat="@drawable/rocket"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="454dp" />
+
+    <Button
+        android:id="@+id/btnPlanet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/planet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnStart"
+        app:layout_constraintTop_toTopOf="@+id/btnStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,17 @@
 package com.example.mvvm.presentation.main
 
 import android.animation.ValueAnimator
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
-import android.view.animation.LinearInterpolator
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
 import com.example.mvvm.R
 import com.example.mvvm.core.Constants
 import com.example.mvvm.databinding.ActivityMainBinding
+import com.example.mvvm.presentation.planet.PlanetsActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -65,6 +66,9 @@ class MainActivity : AppCompatActivity() {
            createAnimation()
            viewModel.fly(revolution,isTraining)
        }
+        binding.btnPlanet.setOnClickListener {
+            startActivity(PlanetsActivity.newIntent(this))
+        }
     }
 
     private fun createAnimation(){
