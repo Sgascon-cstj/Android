@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.update
 class PlanetsViewModel : ViewModel(){
 
     private val planetRepository = PlanetRepository()
-    private val  _planetUiState = MutableStateFlow<PlanetsUIState>(PlanetsUIState.Empty)
-    val planetsUIState = _planetUiState.asStateFlow()
+    private val  _planetUiState = MutableStateFlow<PlanetsUIState>(PlanetsUIState.Empty)//Mutable permet de changer l'état
+    val planetsUIState = _planetUiState.asStateFlow() // asStateFlow permet de mettre en readOnly pour le public
 
     init {
         _planetUiState.update {

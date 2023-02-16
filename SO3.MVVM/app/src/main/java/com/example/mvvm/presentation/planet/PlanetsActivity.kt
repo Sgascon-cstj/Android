@@ -8,15 +8,19 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm.R
 import com.example.mvvm.databinding.ActivityPlanetsBinding
+import com.example.mvvm.presentation.planet.adapters.PlanetRecyclerViewAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class PlanetsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPlanetsBinding// Étape 1 pour le binding
     private val viewModel : PlanetsViewModel by viewModels() //Ajouter une bibliotèque dans le gradle
+    private lateinit var planetRecyclerViewAdapter: PlanetRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +28,16 @@ class PlanetsActivity : AppCompatActivity() {
 
         setContentView(binding.root)//Étape 3 mettre binding root au lieu de R.dksjfhklsd.sakjdhaskd
 
+        planetRecyclerViewAdapter = PlanetRecyclerViewAdapter(listOf())
+        //binding.rcvPlanet.layoutManager = LinearLayoutManager(this)
+        binding.rcvPlanet.layoutManager = GridLayoutManager(this, 1)
+        binding.rcvPlanet.adapter = planetRecyclerViewAdapter
         viewModel.planetsUIState.onEach {
             when(it){
                 is PlanetsUIState.Success ->{
-                 for (planet in it.planets)
-                 {
+                    planetRecyclerViewAdapter.planets = it.planets
+                    planetRecyclerViewAdapter.notifyDataSetChanged()
 
-                 }
                 }
                 is PlanetsUIState.Empty -> Unit
             }
