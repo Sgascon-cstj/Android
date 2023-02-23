@@ -8,6 +8,7 @@ import ca.qc.cstj.localdatasource.core.Constants
 import ca.qc.cstj.localdatasource.domain.models.Note
 import kotlinx.coroutines.flow.Flow
 
+//Dao important pour la bd
 @Dao
 interface NoteRepository {
 
@@ -25,10 +26,13 @@ interface NoteRepository {
 
     @Query("SELECT * FROM notes")
     fun retrieveAll() : Flow<List<Note>>
+
     @Insert
     suspend fun insert(note:Note)
+
     @Delete
     suspend fun delete(note:Note)
+
     @Query("DELETE FROM notes")
     fun deleteAll()
 

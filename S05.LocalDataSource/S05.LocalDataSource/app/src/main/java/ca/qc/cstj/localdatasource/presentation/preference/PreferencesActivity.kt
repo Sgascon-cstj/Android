@@ -28,6 +28,24 @@ class PreferencesActivity : AppCompatActivity() {
         binding.btnClosePreferences.setOnClickListener {
             finish()
         }
+
+        viewModel.preferencesUiState.onEach {
+            when(it){
+                PreferencesUiState.Empty -> Unit
+                is PreferencesUiState.Success -> {
+                    binding.edtName.setText(it.userPreferences.name)
+                    binding.swtDarkMode.isChecked = it.userPreferences.isDarkMode
+                }
+            }
+        }.launchIn(lifecycleScope)
+
+        binding.btnSavePreferences.setOnClickListener {
+            val name = binding.edtName.text.toString()
+            viewModel.saveName(name)
+        }
+        binding.swtDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.saveDarkMode(isChecked)
+        }
     }
 
     companion object {

@@ -1,6 +1,7 @@
 package ca.qc.cstj.localdatasource.presentation.note
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
@@ -31,14 +32,27 @@ class NoteActivity : AppCompatActivity() {
 
         binding.fabColor.setOnClickListener {
             //TODO: Dialog pour le choix de la couleur de la note
-
+            MaterialColorPickerDialog
+                .Builder(this)
+                .setTitle("Choisi une couleur")
+                .setColorShape(ColorShape.CIRCLE)
+                .setColorSwatch(ColorSwatch._300)
+                .setColorListener{ color, colorHex ->
+                    binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
+                    _color = colorHex
+                }
+                .show()
         }
 
         binding.fabSave.setOnClickListener {
             val title = binding.edtTitle.text.toString()
             val content = binding.edtNote.text.toString()
-            if (title.isNotBlank() and content.isNotBlank()){
+            if (title.isNotBlank()){
                 viewModel.saveNote(title,content,_color)
+                finish()
+            }else
+            {
+                Toast.makeText(this, "Le titre de la note ne doit pas être vide.", Toast.LENGTH_LONG).show()
             }
 
         }

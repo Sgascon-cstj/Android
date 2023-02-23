@@ -3,8 +3,12 @@ package ca.qc.cstj.localdatasource.presentation.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.annotation.StyleRes
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.room.Delete
+import ca.qc.cstj.localdatasource.domain.models.Note
 import com.example.localdatasource.databinding.ActivityMainBinding
 import ca.qc.cstj.localdatasource.presentation.main.adapters.NoteRecyclerViewAdapter
 import ca.qc.cstj.localdatasource.presentation.note.NoteActivity
@@ -25,15 +29,21 @@ class MainActivity : AppCompatActivity() {
 
         //TODO: Configurer le layoutManager (grid de 2 colonnes) et l'adapter du recyclerView
 
-        noteRecyclerViewAdapter = NoteRecyclerViewAdapter(listOf())
+        noteRecyclerViewAdapter = NoteRecyclerViewAdapter(listOf(),::onDeleteNote)
         binding.rcvNotes.layoutManager = GridLayoutManager(this, 2)
         binding.rcvNotes.adapter = noteRecyclerViewAdapter
         // TODO : Traiter le changement d'état
         viewModel.mainUiState.onEach {
             when(it){
                 is MainUiState.Success ->{
-                    noteRecyclerViewAdapter.notes = it.notes
+                    noteRecyclerViewAdapter.notes = it.notes.asReversed()
                     noteRecyclerViewAdapter.notifyDataSetChanged()
+                    val mode = if (it.userPreferences.isDarkMode){
+                        AppCompatDelegate.MODE_NIGHT_YES
+                    }else{
+                        AppCompatDelegate.MODE_NIGHT_NO
+                    }
+                    AppCompatDelegate.setDefaultNightMode(mode)
                 }
                 is MainUiState.Empty-> Unit
             }
@@ -47,6 +57,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(PreferencesActivity.newIntent(this))
         }
 
+    }
+    fun onDeleteNote(note: Note){
+        viewModel.deleteNote(note)
     }
 
 }
