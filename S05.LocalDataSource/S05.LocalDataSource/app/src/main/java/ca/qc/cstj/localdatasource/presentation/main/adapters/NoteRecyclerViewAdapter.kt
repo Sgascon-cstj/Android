@@ -1,19 +1,18 @@
 package ca.qc.cstj.localdatasource.presentation.main.adapters
 
+import android.app.AlertDialog
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.lifecycle.AndroidViewModel
 import androidx.recyclerview.widget.RecyclerView
 import ca.qc.cstj.localdatasource.domain.models.Note
-import ca.qc.cstj.localdatasource.presentation.main.MainViewModel
 import com.example.localdatasource.R
 import com.example.localdatasource.databinding.ItemNoteBinding
 
-class NoteRecyclerViewAdapter(var notes: List<Note>, private val onDeleteOne: (Note) -> Unit) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
+class NoteRecyclerViewAdapter(var notes: List<Note>, private val onDeleteOne: (Note) -> Unit, private val OnClickNote: (Note) -> Unit) : RecyclerView.Adapter<NoteRecyclerViewAdapter.ViewHolder>() {
     //TODO:
 
     override fun onCreateViewHolder(
@@ -27,6 +26,9 @@ class NoteRecyclerViewAdapter(var notes: List<Note>, private val onDeleteOne: (N
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val note = notes[position]
             holder.bind(note)
+        holder.itemView.setOnClickListener{
+            OnClickNote(note)
+        }
 
     }
 
@@ -41,6 +43,8 @@ class NoteRecyclerViewAdapter(var notes: List<Note>, private val onDeleteOne: (N
             binding.imvDelete.setOnClickListener{
                 onDeleteOne(note)
             }
+
+
         }
     }
 
