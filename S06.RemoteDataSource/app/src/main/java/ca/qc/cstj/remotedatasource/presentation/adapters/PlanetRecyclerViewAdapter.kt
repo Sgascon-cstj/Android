@@ -34,7 +34,14 @@ class PlanetRecyclerViewAdapter(var planets: List<Planet> = listOf())
 
         fun bind(planet: Planet) {
             binding.txvPlanetName.text = planet.name
-            binding.imgImagePlanet.loadFromResource("planet${planet.image}")
+
+           // binding.imgImagePlanet.loadFromResource("planet${planet.image}")
+            //Pour charger les images
+            Glide.with(binding.root.context)
+                .load(planet.image)
+                .into(binding.imgImagePlanet)
+
+
             binding.txvTemperature.text = String.format("%.2f", planet.temperature)
         }
     }

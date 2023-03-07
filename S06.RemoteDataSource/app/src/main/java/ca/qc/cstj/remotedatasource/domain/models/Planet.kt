@@ -1,3 +1,9 @@
 package ca.qc.cstj.remotedatasource.domain.models
 
-data class Planet(val name: String, val image: String, var temperature: Double)
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Planet(val name: String,
+                  @SerialName("icon") val image: String,
+                  var temperature: Double)
