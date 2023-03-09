@@ -1,4 +1,4 @@
-package com.example.meteomania.ui.notifications
+package com.example.meteomania.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.meteomania.R
-import com.example.meteomania.databinding.FragmentNotificationsBinding
+import com.example.meteomania.databinding.FragmentFavoritesBinding
 
-class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
+class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
-    private val binding: FragmentNotificationsBinding by viewBinding()
-    private val viewModel: NotificationsViewModel by viewModels()
+    private val binding: FragmentFavoritesBinding by viewBinding()
+    private val viewModel: FavoritesViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
